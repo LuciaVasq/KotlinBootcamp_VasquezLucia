@@ -1,12 +1,12 @@
 #!/usr/bin/env kotlin
-
+import java.util.*
 fun main() {
     println("Hello, world!")
     dayOfWeek()
 }
 fun dayOfWeek() {
     println("What day is it today?")
-   /* val dia = Calendar.getInstance().get(Calendar.DAY_OF_WEEK)
+   val dia = Calendar.getInstance().get(Calendar.DAY_OF_WEEK)
     println( when (dia) {
         1 -> "Sunday"
         2 -> "Monday"
@@ -16,5 +16,5 @@ fun dayOfWeek() {
         6 -> "Friday"
         7 -> "Saturday"
         else -> "Time has stopped"
-    })*/
+    })
 }
