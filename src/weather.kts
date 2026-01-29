@@ -1,7 +1,6 @@
 #!/usr/bin/env kotlin
 
 fun main() {
-    // Testing various combinations
     println(whatShouldIDoToday("sad"))
     println(whatShouldIDoToday("happy"))
 
@@ -12,9 +11,13 @@ fun whatShouldIDoToday(
     temperature: Int = 24
 ): String {
     return when {
-        mood == "happy" && weather == "sunny" -> "Go for a walk."
-        temperature > 35 -> "Go swimming."
-        weather == "rainy" && mood == "sad" -> "Watch a movie."
-        else -> "Stay home and read."
+        isHappySunny(mood, weather) -> "tocar pasto"
+        isSadRainyCold(mood, weather, temperature) -> "un rivals"
+        isTooHot(temperature) -> "nadota"
+        else -> "un rivals"
     }
 }
+
+fun isHappySunny(mood: String, weather: String) = mood == "happy" && weather == "sunny"
+fun isSadRainyCold(mood: String, weather: String, temperature: Int) = mood == "sad" && weather == "rainy" && temperature == 0
+fun isTooHot(temperature: Int) = temperature > 35
