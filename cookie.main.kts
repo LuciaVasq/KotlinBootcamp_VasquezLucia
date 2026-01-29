@@ -2,16 +2,25 @@
 import java.util.*
 
 fun main() {
-    val birthday = getBirthday()
-    val fortune = getFortune(birthday)
-    println("\nYour fortune is: $fortune")
+    var fortune: String
+    var userChoice = ""
+    while (userChoice != "no") {
+        fortune = getFortuneCookie()
+        println("\nYour fortune is: $fortune")
+
+        if (fortune.contains("Take it easy")) {
+            println("You got the special fortune!, kill me now.")
+            break
+        }
+
+        print("Play again? (yes/no): pls say no")
+        userChoice = readLine() ?: "no"
+    }
 }
 
-fun getBirthday(): Int {
-    print("Ingresa tu cumpleanos: ")
-    return readLine()?.toIntOrNull() ?: 1
-}
-fun getFortune(birthday: Int): String {
+
+
+fun getFortuneCookie(): String {
     val fortunes = listOf(
         "You will have a great day!",
         "Things will go well for you today.",
@@ -22,9 +31,7 @@ fun getFortune(birthday: Int): String {
         "Treasure your friends because they are your greatest fortune."
     )
 
-    return when (birthday) {
-        28, 31 -> "You are extra lucky today! Buy a lottery ticket."
-        in 1..7 -> "Start your month with a positive attitude."
-        else -> fortunes[birthday % fortunes.size]
-    }
+    print("ingresa tu cumpleanos: ")
+    val birthday = readLine()?.toIntOrNull() ?: 1
+    return fortunes[birthday % fortunes.size]
 }
