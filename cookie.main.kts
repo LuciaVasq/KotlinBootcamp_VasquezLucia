@@ -2,10 +2,16 @@
 import java.util.*
 
 fun main() {
-    val fortune = getFortuneCookie()
-    println("Tu fortuna es: $fortune")
+    val birthday = getBirthday()
+    val fortune = getFortune(birthday)
+    println("\nYour fortune is: $fortune")
 }
-fun getFortuneCookie(): String {
+
+fun getBirthday(): Int {
+    print("Ingresa tu cumpleanos: ")
+    return readLine()?.toIntOrNull() ?: 1
+}
+fun getFortune(birthday: Int): String {
     val fortunes = listOf(
         "You will have a great day!",
         "Things will go well for you today.",
@@ -15,9 +21,10 @@ fun getFortuneCookie(): String {
         "Take it easy and enjoy life!",
         "Treasure your friends because they are your greatest fortune."
     )
-    print("Ingresa tu cumpleanos: ")
 
-    val birthday = readLine()?.toIntOrNull() ?: 1
-
-    return fortunes[birthday % fortunes.size]
+    return when (birthday) {
+        28, 31 -> "You are extra lucky today! Buy a lottery ticket."
+        in 1..7 -> "Start your month with a positive attitude."
+        else -> fortunes[birthday % fortunes.size]
+    }
 }
