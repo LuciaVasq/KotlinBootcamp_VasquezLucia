@@ -41,3 +41,23 @@ fun main() {
 
     myCurry.prepareSpice()
 }
+
+data class SpiceContainer(val spice: Spice) {
+    val label: String = spice.name
+}
+fun main() {
+
+    val curry = Curry("Yellow Curry", "mild")
+    val chili = Curry("Red Chili", "spicy")
+
+
+
+    val container1 = SpiceContainer(curry)
+    val container2 = SpiceContainer(chili)
+
+
+    println("Container 1 label: ${container1.label}")
+    println("Container 2 label: ${container2.label}")
+
+
+}
