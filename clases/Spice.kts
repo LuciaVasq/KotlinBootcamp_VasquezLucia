@@ -1,21 +1,37 @@
 #!/usr/bin/env kotlin
-
-class SimpleSpice{
-    val name: String = "curry"
-    val spiciness: String = "mild"
+class Spice(val name: String, val spiciness: String) {
 
     val heat: Int
         get() {
             return when (spiciness) {
                 "mild" -> 5
+                "medium" -> 10
+                "spicy" -> 15
+                "very spicy" -> 20
                 else -> 0
             }
         }
+
+    init {
+        println("Spice created: $name (Spiciness: $spiciness, Heat: $heat)")
+    }
 }
 
-fun main() {
-    val mySpice = SimpleSpice()
+fun makeSalt() = Spice("salt", spiciness ="mild" )
 
-    println("Spice: ${mySpice.name}")
-    println("Heat level: ${mySpice.heat}")
+fun main() {
+
+    val spiceList = listOf(
+        Spice("curry", "medium"),
+        Spice("cayenne", "spicy"),
+        Spice("ginger", "mild"),
+        Spice("red pepper", "very spicy"),
+        Spice("wasabi", "very spicy"),
+        makeSalt()
+    )
+
+    val mildSpices = spiceList.filter { it.heat <= 10 }
+
+    println("\n--- Spices that are medium or milder ---")
+    mildSpices.forEach { println("${it.name} is ${it.spiciness}") }
 }
