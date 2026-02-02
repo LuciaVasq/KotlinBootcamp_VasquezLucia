@@ -1,37 +1,36 @@
 #!/usr/bin/env kotlin
+import java.util.*
 
+enum class Color(val rgb: Int) {
+    RED(0xFF0000),
+    GREEN(0x00FF00),
+    BLUE(0x0000FF),
+    YELLOW(0xFFFF00)
+}
 interface SpiceColor {
-    val color: String
+    val color: Color // Changed from String to Color enum
 }
 object YellowSpiceColor : SpiceColor {
-    override val color = "yellow"
+    override val color = Color.YELLOW
 }
 interface Grinder {
     fun grind()
 }
 
-abstract class Spice(
+sealed class Spice(
     val name: String,
     val spiciness: String = "mild",
     color: SpiceColor = YellowSpiceColor
 ) : SpiceColor by color {
-
     abstract fun prepareSpice()
 }
 
-class Curry(
-    name: String,
-    spiciness: String,
-    color: SpiceColor = YellowSpiceColor
-) : Spice(name, spiciness, color), Grinder {
-
-    override fun prepareSpice() {
-        grind()
-    }
-
-    override fun grind() {
-        println("Grinding the $name into a fine powder...")
-    }
+class Curry(name: String, spiciness: String, color: SpiceColor = YellowSpiceColor) :
+    Spice(name, spiciness, color) {
+    override fun prepareSpice() { println("Grinding $name.") }
+}
+class Salt : Spice("Salt", "none") {
+    override fun prepareSpice() { println("Refining salt.") }
 }
 fun main() {
     val myCurry = Curry("Yellow Curry", "spicy")
