@@ -1,5 +1,4 @@
 #!/usr/bin/env kotlin
-import java.util.*
 
 fun main() {
     var fortune: String
