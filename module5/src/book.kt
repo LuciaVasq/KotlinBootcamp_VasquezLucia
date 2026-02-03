@@ -9,22 +9,22 @@ class Book (val title: String, val author: String, val year: Int) {
     }
 }
 fun main() {
-    val myBook = Book("The Hobbit", "J.R.R. Tolkien", 1937)
+    val myBook = Book("Bury our bones in the midnight soil", "V.E Swab", 1937)
 
     val (title, author, year) = myBook.getTitleAuthorYear()
 
     println("Here is your book $title written by $author in $year.")
 
-    val allBooks = setOf("Hamlet", "Macbeth", "Romeo and Juliet", "King Lear")
+    val allBooks = setOf("The house of the cerulean sea", "under the whispering door", "WolfSong", "In the lives of puppets")
 
-    val library = mapOf(allBooks to "William Shakespeare")
+    val library = mapOf(allBooks to "T.J Klune")
 
-    val hasHamlet = library.any { it.key.contains("Hamlet") }
-    println("Is Hamlet in the library? $hasHamlet")
+    val hasHamlet = library.any { it.key.contains("sea") }
+    println("Is The house of the cerulean sea in the library? $hasHamlet")
 
-    val moreBooks = mutableMapOf<String, String>("Othello" to "William Shakespeare")
+    val moreBooks = mutableMapOf<String, String>("Othello" to "WT.J Klune")
 
-    moreBooks.getOrPut("The Tempest") { "William Shakespeare" }
+    moreBooks.getOrPut("We burned so bright") { "T.J Klune" }
 
     moreBooks.getOrPut("Othello") { "Unknown Author" }
 

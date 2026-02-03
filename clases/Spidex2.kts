@@ -8,7 +8,7 @@ enum class Color(val rgb: Int) {
     YELLOW(0xFFFF00)
 }
 interface SpiceColor {
-    val color: Color // Changed from String to Color enum
+    val color: Color
 }
 object YellowSpiceColor : SpiceColor {
     override val color = Color.YELLOW
